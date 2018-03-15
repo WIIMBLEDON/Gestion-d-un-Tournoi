@@ -188,7 +188,11 @@ header {
     min-height: auto;
     text-align: center;
     color: #fff;
+<<<<<<< HEAD
     background-image: url(../img/4.jpg);
+=======
+    background-image: url(../img/kansi_web.jpg);
+>>>>>>> 7cf00ffd3924edd941e650d9d62889fe23d5c1e1
     background-position: center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
