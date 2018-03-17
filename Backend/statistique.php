@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <title>statistiques</title>
     <link rel="stylesheet" href="../Css/statistiques.css">
+    <link rel="stylesheet" href="/css/master.css">
+    <link rel="icon" type="image/png" href="../images/ajax_small.png" />
   </head>
   <body>
     <?php
@@ -38,6 +40,8 @@
     <?php
     // $row=2;
     // while ($row <=$lastRow) {
+    if (isset($_REQUEST["choix"])) {
+
     $row=$_REQUEST["choix"];
     // $row=parseInt($donnees);
     $row*=2;
@@ -171,6 +175,7 @@
     <?php
     // $row+=2;
     // }
+    }
     ?>
 
 
