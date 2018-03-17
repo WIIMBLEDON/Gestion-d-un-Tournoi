@@ -20,7 +20,7 @@ else {
     include "db.php";
     rename($_FILES['fic']['tmp_name'], "fichiers\\" . $_FILES['fic']['name']);
     $fichier = "fichiers/" . $_FILES['fic']['name'];
-    require_once "PHPExcel/Classes/PHPExcel.php";
+    require_once "Classes/PHPExcel.php";
 
     //chargement du fichier excel en utilisant PHPExcel's IOFactory
     $excel = PHPExcel_IOFactory::load($fichier);
@@ -61,7 +61,7 @@ else {
         ));
 
 
-        $req1 = $bdd->prepare('INSERT INTO equipe(nom_equipe, id_coach, stade) VALUES (:nom, :id, :stade)');
+        $req1 = $bdd->prepare('INSERT INTO equipe(nom_equipe, id_coach, nom_stade) VALUES (:nom, :id, :stade)');
         $req1->execute(array(
             'nom' => $equipe,
             'id' => $donnees['id_coach'],

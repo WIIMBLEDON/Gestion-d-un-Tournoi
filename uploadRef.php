@@ -20,7 +20,7 @@ else {
     include "db.php";
     rename($_FILES['fic']['tmp_name'], "fichiers\\" . $_FILES['fic']['name']);
     $fichier = "fichiers/" . $_FILES['fic']['name'];
-    require_once "PHPExcel/Classes/PHPExcel.php";
+    require_once "Classes/PHPExcel.php";
 
     //chargement du fichier excel en utilisant PHPExcel's IOFactory
     $excel = PHPExcel_IOFactory::load($fichier);
