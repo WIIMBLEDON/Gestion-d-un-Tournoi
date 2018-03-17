@@ -1,0 +1,134 @@
+@import url(../css/cssonly.css);
+.author {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: small;
+  padding: 0 10px; }
+
+.author a {
+  color: #0d2636; }
+
+body {
+  font-size: 1.4em;
+  background: url("../img/room.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 50em;
+  margin-bottom: 4em; }
+
+.buttons {
+  margin-top: 1em;
+  float: right; }
+
+.drawNext, .drawAll {
+  margin-bottom: 1em; }
+
+.drawCompleted {
+  margin-top: 1em; }
+
+.group {
+  min-height: 8em;
+  padding-top: .5em; }
+
+.groupName {
+  font-weight: bold; }
+
+.groupsArea, .fixtureList {
+  margin-top: 1em;
+  background-color: rgba(255, 255, 255, 0.7);
+  -webkit-border-radius: 5px;
+          border-radius: 5px; }
+
+.fixtureList {
+  margin-top: 0em;
+  margin-bottom: 1em; }
+
+.fixtureList, .groupsArea {
+  -webkit-box-shadow: 1px 2px 10px 0px rgba(0, 0, 0, 0.25);
+          box-shadow: 1px 2px 10px 0px rgba(0, 0, 0, 0.25); }
+
+.fixturesTable {
+  font-size: 0.9em; }
+
+footer .container {
+  bottom: 0; }
+
+.match td.home {
+  text-align: right; }
+
+.match img {
+  margin: 0px 5px; }
+
+.matchday:nth-of-type(odd), .matchday:nth-of-type(even) {
+  background-color: #eee !important;
+  font-weight: bold;
+  text-align: center; }
+
+.nav-tabs > li > a {
+  -webkit-border-radius: 0 !important;
+          border-radius: 0 !important; }
+
+.portfolio-link {
+  margin-top: 3em;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center; }
+
+.portfolio-link .container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center; }
+
+.potentialTeams, .replayDraw {
+  display: block;
+  text-align: center;
+  margin: auto;
+  margin-top: 1em;
+  margin-bottom: 1em; }
+
+.potsArea {
+  background-color: rgba(85, 120, 171, 0.3);
+  margin-bottom: 1em; }
+
+.groupsArea li.team {
+  font-size: smaller;
+  padding: 0.1em 0em;
+  list-style-type: none;
+  white-space: nowrap;
+  max-height: 1em; }
+
+li.team img {
+  padding: 0em 0.5em 0 0; }
+
+.teamName {
+  height: 2.2em; }
+
+.teamsInPot .team {
+  list-style-type: none;
+  font-size: 0.9em; }
+
+ul.teamsInPot {
+  padding-left: 0; }
+
+.vs {
+  text-align: center; }

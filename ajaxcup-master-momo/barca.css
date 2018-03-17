@@ -1,0 +1,48 @@
+body
+{
+	background-image: url(15.jpg);
+}
+ul
+{
+	margin: 70px auto;
+}
+li
+{
+	display: inline-block;
+	margin-left: 80px;
+	width: 200px;
+	border: 1px solid black;
+	margin-bottom: 10px;
+	text-align: center;
+	background-color: rgb(3, 34, 76);
+	font-weight: bold;
+	border-radius: 5px;
+	font-size: 30px;
+}
+a
+{
+	color: #fff;
+}
+a:hover
+{
+	color: #000;
+} 
+#ter
+{
+	margin-left: 35%;
+	margin-bottom: 70px;
+}
+#defense
+{
+	margin-left: 11%;
+	margin-bottom: 70px;
+}
+#milieu
+{
+	margin-left: 17%;
+	margin-bottom: 70px;
+}
+#attaque
+{
+	margin-left: 17%;	
+}
