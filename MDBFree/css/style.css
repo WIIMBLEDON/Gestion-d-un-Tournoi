@@ -5,15 +5,30 @@
 }
 
 body {
-    background-image: url("../../ajaxcup-master/img/16.jpg");
-
+background-image: url('../../ajaxcup-master/img/15.jpg');
+background-size: 90em 50em;
+background-repeat: no-repeat;
 }
 
 #block {
     margin: auto;
-    padding-left: 10em;
+    padding-left: 31em;
 }
-
+#office{
+  background-image: url('../../ajaxcup-master/img/15.jpg');
+  background-size: 90em 63em;
+  background-repeat: no-repeat;
+}
+#coach{
+background-image: url("../../ajaxcup-master/img/16.jpg");
+  background-size: 90em 63em;
+  background-repeat: no-repeat;
+}
+#referee {
+  background-image: url('../../ajaxcup-master/img/0.jpg');
+background-size: 90em 63em;
+  background-repeat: no-repeat;
+}
 #btn {
     padding-left: 35em;
     padding-top: 20em;
@@ -81,4 +96,10 @@ body {
     border-width: 0 3px 3px 0;
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
+}
+.upload{
+padding:  25em 35em;
+}
+.center{
+  padding-left: 50em;
 }
