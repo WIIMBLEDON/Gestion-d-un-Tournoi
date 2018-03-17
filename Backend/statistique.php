@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>statistiques</title>
-    <link rel="stylesheet" href="statistiques.css">
+    <link rel="stylesheet" href="../Css/statistiques.css">
   </head>
   <body>
     <?php
@@ -76,17 +76,20 @@
         $CartonRouge2=$sheet->getCell('O'.$k);
         $Remplacement1=$sheet->getCell('P'.$row);
         $Remplacement2=$sheet->getCell('P'.$k);
+        $images1=$sheet->getCell('Q'.$row);
+        $images2=$sheet->getCell('Q'.$k);
+
         ?>
   <div class="container">
       <table align="center" cellspacing="18">
           <tr>
-            <td><img src="../images/santa_claus.png" alt=""></td>
+            <td><img src="<?php echo $images1 ?>" alt=""></td>
             <td>
               <div class="barre">
                   <h3 ><?php echo "MATCH".($row/2); ?></h3>
               </div>
             </td>
-            <td><img src="../images/ajax_smaller.png" alt=""></td>
+            <td><img src="<?php echo $images2 ?>" alt=""></td>
           </tr>
           <tr>
             <td style="color:red;"><?php echo $NomEquipe1; ?></td>
