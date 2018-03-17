@@ -16,17 +16,19 @@
     $objPHPExcel = $objReader->load($fichier);
     $sheet = $objPHPExcel->getActiveSheet() ;
     $lastRow=$sheet->getHighestRow();
+    //Controle du nombre d'option dans le select
+    $index=$lastRow/2;
+
      ?>
   <form class="" action="" method="post" align="center">
     <select class="" name="choix">
       <?php
-      for ($i=2; $i <=$lastRow-3 ; $i++) {
+      for ($i=2; $i <=(int)($index)+1; $i++) {
         ?>
         <option value="<?php echo $i-1?>">MATCH<?php echo $i-1; ?></option>
         <?php
       }
       ?>
-
       <!-- <option value="1">MATCH1</option>
       <option value="2">MATCH2</option>
       <option value="3">MATCH3</option> -->
