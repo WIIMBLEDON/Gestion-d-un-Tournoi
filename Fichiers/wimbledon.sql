@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Mer 14 Mars 2018 à 23:12
+-- Généré le :  Sam 17 Mars 2018 à 13:43
 -- Version du serveur :  5.7.21-0ubuntu0.16.04.1
 -- Version de PHP :  7.0.25-0ubuntu0.16.04.1
 
@@ -34,7 +34,9 @@ CREATE TABLE `arbitre` (
   `Nom` varchar(100) DEFAULT NULL,
   `Nationalite` varchar(100) DEFAULT NULL,
   `Age` int(11) DEFAULT NULL,
-  `id_renc` int(11) DEFAULT NULL
+  `id_renc` int(11) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `motdepasse` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -45,10 +47,12 @@ CREATE TABLE `arbitre` (
 
 CREATE TABLE `coach` (
   `id_coach` int(11) NOT NULL,
-  `Prenom` varchar(100) DEFAULT NULL,
-  `Nom` varchar(100) DEFAULT NULL,
-  `Nationalite` varchar(100) DEFAULT NULL,
-  `Age` int(11) DEFAULT NULL
+  `prenom` varchar(100) DEFAULT NULL,
+  `nom` varchar(100) DEFAULT NULL,
+  `nationalite` varchar(100) DEFAULT NULL,
+  `age` int(11) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `motdepasse` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -59,7 +63,9 @@ CREATE TABLE `coach` (
 
 CREATE TABLE `equipe` (
   `Nom_equipe` varchar(100) NOT NULL DEFAULT '',
-  `id_coach` int(11) DEFAULT NULL
+  `id_coach` int(11) NOT NULL,
+  `nom_stade` varchar(50) NOT NULL,
+  `id_poule` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -71,7 +77,7 @@ CREATE TABLE `equipe` (
 CREATE TABLE `evenement` (
   `id_even` int(11) NOT NULL,
   `Type_even` varchar(20) DEFAULT NULL,
-  `Heure` varchar(15) DEFAULT NULL,
+  `minute` varchar(20) DEFAULT NULL,
   `id_renc` int(11) DEFAULT NULL,
   `id_joueur` int(11) DEFAULT NULL,
   `Nom_equipe` varchar(100) DEFAULT NULL
@@ -96,15 +102,24 @@ CREATE TABLE `joueur` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `offficielle`
+--
+
+CREATE TABLE `offficielle` (
+  `email` varchar(100) NOT NULL,
+  `motdepasse` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `phase`
 --
 
 CREATE TABLE `phase` (
   `id_phase` int(11) NOT NULL,
-  `Etape_Phase` varchar(20) DEFAULT NULL,
-  `Duree_Phase` varchar(20) DEFAULT NULL,
-  `id_tourn` int(11) DEFAULT NULL,
-  `Nom_stade` varchar(100) DEFAULT NULL
+  `etape_phase` varchar(20) DEFAULT NULL,
+  `duree_phase` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -115,6 +130,7 @@ CREATE TABLE `phase` (
 
 CREATE TABLE `poule` (
   `id_poule` varchar(20) NOT NULL DEFAULT '',
+  `nom_poule` varchar(50) NOT NULL,
   `id_phas` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -126,12 +142,11 @@ CREATE TABLE `poule` (
 
 CREATE TABLE `rencontre` (
   `id_renc` int(11) NOT NULL,
-  `Lieu_renc` varchar(100) DEFAULT NULL,
-  `Date_renc` date DEFAULT NULL,
-  `Heure_renc` varchar(20) DEFAULT NULL,
-  `Nom_Stade` varchar(100) DEFAULT NULL,
+  `date_renc` datetime DEFAULT NULL,
+  `nom_stade` varchar(100) DEFAULT NULL,
   `id_phase` int(11) DEFAULT NULL,
-  `Nom_equipe` varchar(100) DEFAULT NULL
+  `nom_equipe` varchar(100) DEFAULT NULL,
+  `nom_equip` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -141,19 +156,8 @@ CREATE TABLE `rencontre` (
 --
 
 CREATE TABLE `stade` (
-  `Nom_Stade` varchar(100) NOT NULL DEFAULT '',
-  `Lieu` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `tournoi`
---
-
-CREATE TABLE `tournoi` (
-  `id_tour` int(11) NOT NULL,
-  `Nom` varchar(100) DEFAULT NULL
+  `nom_stade` varchar(100) NOT NULL DEFAULT '',
+  `lieu` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -178,7 +182,9 @@ ALTER TABLE `coach`
 --
 ALTER TABLE `equipe`
   ADD PRIMARY KEY (`Nom_equipe`),
-  ADD KEY `fk_coach` (`id_coach`);
+  ADD KEY `fk_coach` (`id_coach`),
+  ADD KEY `fk_Stade` (`nom_stade`),
+  ADD KEY `fk_idPoule` (`id_poule`);
 
 --
 -- Index pour la table `evenement`
@@ -197,12 +203,16 @@ ALTER TABLE `joueur`
   ADD KEY `fk_equip` (`Nom_equipe`);
 
 --
+-- Index pour la table `offficielle`
+--
+ALTER TABLE `offficielle`
+  ADD PRIMARY KEY (`email`);
+
+--
 -- Index pour la table `phase`
 --
 ALTER TABLE `phase`
-  ADD PRIMARY KEY (`id_phase`),
-  ADD KEY `fk_tourn` (`id_tourn`),
-  ADD KEY `fk_stad` (`Nom_stade`);
+  ADD PRIMARY KEY (`id_phase`);
 
 --
 -- Index pour la table `poule`
@@ -216,21 +226,16 @@ ALTER TABLE `poule`
 --
 ALTER TABLE `rencontre`
   ADD PRIMARY KEY (`id_renc`),
-  ADD KEY `fk_stade` (`Nom_Stade`),
-  ADD KEY `fk_equipe` (`Nom_equipe`),
-  ADD KEY `fk_phas` (`id_phase`);
+  ADD KEY `fk_stade` (`nom_stade`),
+  ADD KEY `fk_equipe` (`nom_equipe`),
+  ADD KEY `fk_phas` (`id_phase`),
+  ADD KEY `fk_equip` (`nom_equip`);
 
 --
 -- Index pour la table `stade`
 --
 ALTER TABLE `stade`
-  ADD PRIMARY KEY (`Nom_Stade`);
-
---
--- Index pour la table `tournoi`
---
-ALTER TABLE `tournoi`
-  ADD PRIMARY KEY (`id_tour`);
+  ADD PRIMARY KEY (`nom_stade`);
 
 --
 -- AUTO_INCREMENT pour les tables exportées
@@ -255,7 +260,7 @@ ALTER TABLE `evenement`
 -- AUTO_INCREMENT pour la table `joueur`
 --
 ALTER TABLE `joueur`
-  MODIFY `id_joueur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1377;
+  MODIFY `id_joueur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=966;
 --
 -- AUTO_INCREMENT pour la table `phase`
 --
@@ -266,11 +271,6 @@ ALTER TABLE `phase`
 --
 ALTER TABLE `rencontre`
   MODIFY `id_renc` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT pour la table `tournoi`
---
-ALTER TABLE `tournoi`
-  MODIFY `id_tour` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Contraintes pour les tables exportées
 --
@@ -302,13 +302,6 @@ ALTER TABLE `joueur`
   ADD CONSTRAINT `fk_equip` FOREIGN KEY (`Nom_equipe`) REFERENCES `equipe` (`Nom_equipe`);
 
 --
--- Contraintes pour la table `phase`
---
-ALTER TABLE `phase`
-  ADD CONSTRAINT `fk_stad` FOREIGN KEY (`Nom_stade`) REFERENCES `stade` (`Nom_Stade`),
-  ADD CONSTRAINT `fk_tourn` FOREIGN KEY (`id_tourn`) REFERENCES `tournoi` (`id_tour`);
-
---
 -- Contraintes pour la table `poule`
 --
 ALTER TABLE `poule`
@@ -318,9 +311,9 @@ ALTER TABLE `poule`
 -- Contraintes pour la table `rencontre`
 --
 ALTER TABLE `rencontre`
-  ADD CONSTRAINT `fk_equipe` FOREIGN KEY (`Nom_equipe`) REFERENCES `equipe` (`Nom_equipe`),
+  ADD CONSTRAINT `fk_equipe` FOREIGN KEY (`nom_equipe`) REFERENCES `equipe` (`Nom_equipe`),
   ADD CONSTRAINT `fk_phas` FOREIGN KEY (`id_phase`) REFERENCES `phase` (`id_phase`),
-  ADD CONSTRAINT `fk_stade` FOREIGN KEY (`Nom_Stade`) REFERENCES `stade` (`Nom_Stade`);
+  ADD CONSTRAINT `fk_stade` FOREIGN KEY (`nom_stade`) REFERENCES `stade` (`nom_stade`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
