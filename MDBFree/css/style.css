@@ -1,0 +1,105 @@
+/* Your custom styles */
+
+.checkbox-teal [type="checkbox"]:checked + label:before {
+    border-color: transparent #009688 #009688 transparent;
+}
+
+body {
+background-image: url('../../ajaxcup-master/img/15.jpg');
+background-size: 90em 50em;
+background-repeat: no-repeat;
+}
+
+#block {
+    margin: auto;
+    padding-left: 31em;
+}
+#office{
+  background-image: url('../../ajaxcup-master/img/15.jpg');
+  background-size: 90em 63em;
+  background-repeat: no-repeat;
+}
+#coach{
+background-image: url("../../ajaxcup-master/img/16.jpg");
+  background-size: 90em 63em;
+  background-repeat: no-repeat;
+}
+#referee {
+  background-image: url('../../ajaxcup-master/img/0.jpg');
+background-size: 90em 63em;
+  background-repeat: no-repeat;
+}
+#btn {
+    padding-left: 35em;
+    padding-top: 20em;
+}
+
+.color {
+    color: #48D1CA;
+}
+
+.contain {
+    color: #48D1CA;
+    font-weight: bold;
+    display: block;
+    position: relative;
+    padding-left: 70px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.contain input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+
+}
+
+.contain:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+.contain input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.contain input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.contain .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.upload{
+padding:  25em 35em;
+}
+.center{
+  padding-left: 50em;
+}
