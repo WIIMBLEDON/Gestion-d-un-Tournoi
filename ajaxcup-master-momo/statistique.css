@@ -1,0 +1,81 @@
+body
+{
+background-image: url(15.jpg);
+background-attachment: fixed;
+}
+div
+{
+	text-align: center;
+	width: 400px;
+}
+p
+{
+	background-color: rgb(3, 34, 76);
+	height: 50px;
+	color: #FFFFFF;
+	padding-top: 20px;
+}
+#sta
+{
+	width: 400px;
+	height: 590px;
+	margin: 100px auto;
+	background-color: #000000;
+}
+#attemps
+{
+	margin: 20px auto;
+}
+#Score
+{
+	margin: 50px auto;
+}
+.left_container
+{
+	border: 5px solid #193961;
+	position: absolute;
+	left: 130px;
+	top: 80px;
+	background-color: rgba(255,255,255,0.7);
+}
+.right_container
+{
+	border: 5px solid #193961;
+	position: absolute;
+	right: 130px;
+	top: 80px;
+	background-color: rgba(255,255,255,0.7);
+}
+.left_container {
+  /*position: absolute;*/
+  /*top: 50%;*/
+  /*left: 14.5%;*/
+  transform: translate(-50%,-50%);
+  width: 110px;
+  height: 110px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  margin-left: 420px;
+  margin-top: 1px;
+}
+.right_container {
+  /*position: absolute;*/
+  /*top: 50%;*/
+  /*right: -5%;*/
+  transform: translate(-50%,-50%);
+  width: 110px;
+  height: 110px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  /*margin-top: auto;*/
+  margin-right: 310px;
+}
+.photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  animation: mvt 10s ease-in-out infinite;
+  margin-right: 320px;
+}
+
+
