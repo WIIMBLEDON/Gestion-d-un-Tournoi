@@ -1,5 +1,4 @@
 <?php
-
     require_once "../Classes/PHPExcel.php";
 
     // Ouvrir un fichier Excel en lecture
@@ -27,7 +26,6 @@
                 $NomEquipe= $sheet->getCell('F'.$row);
 
               //Insertion des données
-              echo $NomEquipe."<br>";
               $bool=false;
               $resultat=$connexion->query("SELECT Nom_equipe FROM equipe");
               $donnees=$resultat->fetchAll(PDO::FETCH_ASSOC);
@@ -37,22 +35,17 @@
                    break;
                 }
               }
-              // while ($donnees=$resultat->fetch() && $bool==false) {
-              //   if ($NomEquipe==$donnees)
-              //     $bool=true;
-              // }
+            
               if (!$bool) {
                 $requete="INSERT INTO equipe (`Nom_equipe`) VALUES ('$NomEquipe')";
                 $connexion->query($requete);
-              }else {
-                echo "boolean= ".$bool."<br>";
               }
 
               $sql="INSERT INTO joueur (`Prenom`,`Nom`,`Nationalite`,`Age`,`Nom_equipe`,`Poste`) VALUES
                           ('$Prenom','$Nom','$Nationalite','$Age','$NomEquipe','$Poste')";
               $connexion->query($sql);
 
-              echo "Inserttion réussie ligne:".$row."<br><br>";
+              // echo "Inserttion réussie ligne:".$row."<br><br>";
 
           }
       }
